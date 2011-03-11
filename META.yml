@@ -1,7 +1,6 @@
 ---
 abstract: 'Tapper - Common functions for all Tapper classes'
 author:
-  - 'AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>'
   - 'AMD OSRC Tapper Team <tapper@amd64.org>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
@@ -10,7 +9,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 1.00'
+generated_by: 'Module::Install version 0.91'
 license: freebsd
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,4 +26,7 @@ requires:
   MooseX::Log::Log4perl: 0
   common::sense: 0
   perl: 5.10.0
-version: 3.000002
+resources:
+  bugtracker: http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-Base
+  repository: git://github.com/amd/Tapper-Base.git
+version: 3.000004
