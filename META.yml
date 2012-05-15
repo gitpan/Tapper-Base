@@ -28,7 +28,7 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Tapper-Base
   homepage: http://metacpan.org/release/Tapper-Base
   repository: git://github.com/amd/Tapper-Base.git
-version: 4.001.001
+version: 4.1.2
 x_Dist_Zilla:
   plugins:
     -
