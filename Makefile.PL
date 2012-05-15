@@ -1,27 +1,61 @@
+
 use strict;
 use warnings;
 
-use inc::Module::Install;
+use 5.010;
 
-name     'Tapper-Base';
-all_from 'lib/Tapper/Base.pm';
-author   'AMD OSRC Tapper Team <tapper@amd64.org>';
-license  'freebsd';
+use ExtUtils::MakeMaker 6.30;
 
-build_requires 'Test::More';
-build_requires 'Test::Perl::Critic';
 
-author_requires 'Module::Install::WriteAll';
 
-requires 'common::sense';
-requires 'Fcntl';
-requires 'LockFile::Simple';
-requires 'MooseX::Log::Log4perl';
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "Tapper - Common functions for all Tapper classes",
+  "AUTHOR" => "AMD OSRC Tapper Team <tapper\@amd64.org>",
+  "BUILD_REQUIRES" => {
+    "File::Temp" => 0,
+    "Log::Log4perl" => 0,
+    "Test::More" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "Tapper-Base",
+  "EXE_FILES" => [],
+  "LICENSE" => "open_source",
+  "NAME" => "Tapper::Base",
+  "PREREQ_PM" => {
+    "Fcntl" => 0,
+    "LockFile::Simple" => 0,
+    "Moose" => 0,
+    "MooseX::Log::Log4perl" => 0,
+    "common::sense" => 0
+  },
+  "VERSION" => "4.001.001",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
+);
 
-auto_install;
 
-repository 'git://github.com/amd/Tapper-Base.git';
-bugtracker 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-Base';
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
-WriteAll;
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 

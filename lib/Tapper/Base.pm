@@ -1,5 +1,11 @@
 package Tapper::Base;
-
+BEGIN {
+  $Tapper::Base::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::Base::VERSION = '4.001.001';
+}
+# ABSTRACT: Tapper - Common functions for all Tapper classes
 
 use Moose;
 use Fcntl;
@@ -7,42 +13,10 @@ use LockFile::Simple;
 
 use common::sense;
 
-
 use 5.010;
 
 with 'MooseX::Log::Log4perl';
 
-
-=head1 NAME
-
-Tapper::Base - Tapper - Common functions for all Tapper classes
-
-=cut
-
-our $VERSION = '3.000010';
-
-=head1 SYNOPSIS
-
-Currently, only an OO interface is implemented. Non-OO will follow when needed.
-
- use Tapper::Base;
- use Moose;
-
- extends 'Tapper::Base';
-
-
-=head1 FUNCTIONS
-
-=head2 kill_instance
-
-Kill the process whose id is in the given pidfile.
-
-@param string - pid file name
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub kill_instance
 {
@@ -62,19 +36,6 @@ sub kill_instance
 
 }
 
-=head2 run_one
-
-Run one instance of the given command. Kill previous incarnations if necessary.
-
-@param hash ref - {command  => command to execute,
-                   pid_file => pid file containing the ID of last incarnation,
-                   argv     => array ref containg (optional) arguments}
-
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub run_one
 {
@@ -104,16 +65,6 @@ sub run_one
 
 
 
-=head2 makedir
-
-Checks whether a given directory exists and creates it if not.
-
-@param string - directory to create
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub makedir
 {
@@ -127,24 +78,6 @@ sub makedir
 }
 
 
-=cut
-
-=head2 log_and_exec
-
-Execute a given command. Make sure the command is logged if requested and none
-of its output pollutes the console. In scalar context the function returns 0
-for success and the output of the command on error. In array context the
-function always return a list containing the return value of the command and
-the output of the command.
-
-@param string - command
-
-@return success - 0
-@return error   - error string
-@returnlist success - (0, output)
-@returnlist error   - (return value of command, output)
-
-=cut
 
 sub log_and_exec
 {
@@ -166,27 +99,80 @@ sub log_and_exec
         return 0;
 }
 
+1; # End of Tapper::Base
+
+__END__
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+Tapper::Base - Tapper - Common functions for all Tapper classes
+
+=head1 SYNOPSIS
+
+ package Tapper::Some::Class;
+ use Moose;
+ extends 'Tapper::Base';
+
+=head1 FUNCTIONS
+
+=head2 kill_instance
+
+Kill the process whose id is in the given pidfile.
+
+@param string - pid file name
+
+@return success - 0
+@return error   - error string
+
+=head2 run_one
+
+Run one instance of the given command. Kill previous incarnations if necessary.
+
+@param hash ref - {command  => command to execute,
+                   pid_file => pid file containing the ID of last incarnation,
+                   argv     => array ref containg (optional) arguments}
+
+@return success - 0
+@return error   - error string
+
+=head2 makedir
+
+Checks whether a given directory exists and creates it if not.
+
+@param string - directory to create
+
+@return success - 0
+@return error   - error string
+
+=head2 log_and_exec
+
+Execute a given command. Make sure the command is logged if requested and none
+of its output pollutes the console. In scalar context the function returns 0
+for success and the output of the command on error. In array context the
+function always return a list containing the return value of the command and
+the output of the command.
+
+@param string - command
+
+@return success - 0
+@return error   - error string
+@returnlist success - (0, output)
+@returnlist error   - (return value of command, output)
 
 =head1 AUTHOR
 
-AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-Please report any bugs or feature requests to C<bug-tapper-base at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-Base>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
+This is free software, licensed under:
 
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
-
-This program is released under the following license: freebsd
+  The (two-clause) FreeBSD License
 
 =cut
 
-1; # End of Tapper::Base
