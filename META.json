@@ -22,7 +22,8 @@
       "runtime" : {
          "requires" : {
             "Fcntl" : "0",
-            "LockFile::Simple" : "0",
+            "LockFile::Simple" : "0.208",
+            "Module::Find" : "0.11",
             "Moose" : "0",
             "MooseX::Log::Log4perl" : "0",
             "common::sense" : "0",
@@ -52,7 +53,7 @@
          "web" : "http://github.com/amd/Tapper-Base"
       }
    },
-   "version" : "4.0.3",
+   "version" : "4.1.3",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -214,6 +215,17 @@
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "@AMD/@Git/Push",
             "version" : "1.121010"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Prereqs",
+            "config" : {
+               "Dist::Zilla::Plugin::Prereqs" : {
+                  "phase" : "runtime",
+                  "type" : "requires"
+               }
+            },
+            "name" : "Prereqs",
+            "version" : "4.300016"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",

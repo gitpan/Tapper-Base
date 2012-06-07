@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::Base::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::Base::VERSION = '4.0.3';
+  $Tapper::Base::VERSION = '4.1.3';
 }
 # ABSTRACT: Tapper - Common functions for all Tapper classes
 

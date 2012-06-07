@@ -27,12 +27,13 @@ my %WriteMakefileArgs = (
   "NAME" => "Tapper::Base",
   "PREREQ_PM" => {
     "Fcntl" => 0,
-    "LockFile::Simple" => 0,
+    "LockFile::Simple" => "0.208",
+    "Module::Find" => "0.11",
     "Moose" => 0,
     "MooseX::Log::Log4perl" => 0,
     "common::sense" => 0
   },
-  "VERSION" => "4.0.3",
+  "VERSION" => "4.1.3",
   "test" => {
     "TESTS" => "t/*.t"
   }
