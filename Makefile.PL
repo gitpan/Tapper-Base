@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "MooseX::Log::Log4perl" => 0,
     "common::sense" => 0
   },
-  "VERSION" => "4.1.3",
+  "VERSION" => "4.0.4",
   "test" => {
     "TESTS" => "t/*.t"
   }
