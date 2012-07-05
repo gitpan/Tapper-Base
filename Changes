@@ -1,5 +1,8 @@
 Revision history for Tapper-Base
 
+4.0.5     2012-07-05
+        - assert OS = Unix
+
 4.0.4     2012-06-11
         - fix wrong version tags again
 

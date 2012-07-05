@@ -1,9 +1,11 @@
 package Tapper::Base;
+# git description: v4.0.4-2-g93e0db7
+
 BEGIN {
   $Tapper::Base::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::Base::VERSION = '4.0.4';
+  $Tapper::Base::VERSION = '4.0.5';
 }
 # ABSTRACT: Tapper - Common functions for all Tapper classes
 

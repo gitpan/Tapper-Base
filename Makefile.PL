@@ -1,3 +1,5 @@
+use lib 'inc';
+use Devel::AssertOS qw[Unix];
 
 use strict;
 use warnings;
@@ -33,7 +35,7 @@ my %WriteMakefileArgs = (
     "MooseX::Log::Log4perl" => 0,
     "common::sense" => 0
   },
-  "VERSION" => "4.0.4",
+  "VERSION" => "4.0.5",
   "test" => {
     "TESTS" => "t/*.t"
   }
