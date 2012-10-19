@@ -59,7 +59,7 @@
          "web" : "http://github.com/amd/Tapper-Base"
       }
    },
-   "version" : "4.1.0",
+   "version" : "4.1.1",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
