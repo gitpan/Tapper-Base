@@ -14,6 +14,7 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Tapper - Common functions for all Tapper classes",
   "AUTHOR" => "AMD OSRC Tapper Team <tapper\@amd64.org>",
   "BUILD_REQUIRES" => {
+    "English" => 0,
     "File::Temp" => 0,
     "Log::Log4perl" => 0,
     "Test::More" => 0,
@@ -35,7 +36,7 @@ my %WriteMakefileArgs = (
     "MooseX::Log::Log4perl" => 0,
     "common::sense" => 0
   },
-  "VERSION" => "4.0.5",
+  "VERSION" => "4.1.0",
   "test" => {
     "TESTS" => "t/*.t"
   }
